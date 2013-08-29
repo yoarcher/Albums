@@ -1,0 +1,73 @@
+// Place all the styles related to the photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+p.timestamp {
+	text-align: right;
+	font-size: 80%;
+	line-height: 100%;
+}
+
+#upload {
+	position: relative;
+	left: 20%;
+}
+
+#gallery {
+	position: fixed;
+	right: 2px;
+	width: 50px;
+	max-height: 250px;
+	text-align: center;
+	padding: 2px 0 2px 0;
+	border: ridge;
+}
+
+#gallery .smallpic {
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+	display: block;
+	margin: auto;
+	background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 2px solid #ffffff;
+}
+
+#gallery .smallpic:hover {
+	border: 2px solid #000000;
+}
+
+.tag {
+	position: absolute;
+	border: 1px solid #ffffff;
+	z-index: 1;
+}
+
+.tag:hover {
+	border: 3px outset #ffffff;
+}
+.tag:hover .label{
+	display: inline-block;
+}
+
+.tag .label {
+	position: absolute;
+	right: -2px;
+	bottom: -24px;
+	height: 15px;
+	display: none;
+	z-index: 1;
+	border: 1px solid #83acc6;
+	background: #f0f5f8;
+	padding: 2px;
+	font-size: 10px;
+	white-space: nowrap;
+	display: none;
+}
+
+.close {
+	background-color: #ffffff;
+	background-image: image-url("close-icon.png")
+}

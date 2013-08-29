@@ -1,0 +1,26 @@
+<div id = 'links'>
+	<a href = '/users/index'>[Back to users list]</a> 
+</div>
+
+<h2 class='log'>Login</h2>
+<%= form_tag("post_login", :method => "post", :onsubmit => "return login_check();", :id => "form") do %>
+<table class = "form">
+	<tr>
+		<td colspan = '2' align='center' id='alert' class='notice'>
+			<p style="color: #17aa64;")><% if flash[:notice] %><%= flash[:notice] %><% end %></p>
+			<p><% if flash[:error] %><%= flash[:error] %><% end %></p>
+		</td>
+	</tr>
+	<tr>
+		<td width="80px">Login Name:</td><td><%= text_field_tag(:login_name, nil, :class => "textfield", :onkeyup => "autocheck('login_name')") %></td>
+		<td id="err_login_name" class="notice"></td>
+	</tr>
+	<tr>
+		<td>Password:</td><td><%= password_field_tag(:pwd, nil, :class => "textfield", :onkeyup => "autocheck('pwd')") %></td>
+		<td id="err_pwd" class="notice"></td>
+	</tr>
+	<tr>
+		<td colspan = '2' align='center'><%= submit_tag("Login", :class => "submit") %><%= submit_tag("Register", :type => "button", :onclick => "window.location='new'") %></td>
+	</tr>
+</table>
+<% end %>

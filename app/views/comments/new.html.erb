@@ -1,0 +1,26 @@
+<div id = 'links'>
+	<% if @user_id.nil? then %>
+	<a href = '/users/login'>[Log in]</a>
+	<% else %>
+	<a href = "/photos/index/<%= @user_id %>">[Home]</a>
+	<a href = '/users/logout'>[Log out]</a>
+	<% end %>
+	<a href = '/users/index'>[Back to users list]</a> 
+</div>
+
+<% if flash[:notice] %>
+<p class="fnotice"><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:error] %>
+<p class="ferror"><%= flash[:error] %></p>
+<% end %>
+
+<div class = 'photo'><%= image_tag("/images/#{@current_photo.file_name}", :id => "img") %><br/>
+	<% if !@user_id.nil? then %>
+	<%= form_tag("/comments/create/#{params[:id]}", :method => "post") do %>
+	<%= text_area_tag(:new_comment, nil, :placeholder => "write new comment here", :size => "65x4") %>
+	<%= submit_tag("Send", :class => 'button') %> <% end %>
+	<% else %>
+	<p class = 'ferror'>Only logged-in users can comment on the photo.</p></div>
+	<% end %>
+</div>

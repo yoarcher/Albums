@@ -1,0 +1,84 @@
+<% content_for :javascript_includes do %>
+<%= javascript_include_tag "Tagger.js" %>
+<% end %>
+
+<div id = 'links'>
+	<% if @user_id.nil? then %>
+	<a href = '/users/login'>[Log in]</a>
+	<% else %>
+	<a href = "/photos/index/<%=@user_id%>">[Home]</a>
+	<% if @user_id == params[:id].to_i then %>
+	<a href = '/photos/new'>[New Photo]</a>
+	<% end %>
+	<a href = '/users/logout'>[Log out]</a>
+	<% end %>
+	<a href = '/users/index'>[Back to users list]</a> 
+</div>
+
+<% if flash[:notice] %>
+<p class="fnotice"><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:error] %>
+<p class="ferror"><%= flash[:error] %></p>
+<% end %>
+
+<% if @user == nil then
+	@title = 'Error' %>
+	<h1>Invalid Page</h1>
+	<% else 
+	@title = @message %>
+	<h1>Welcome to <%= @message %></h1>
+	<br>
+
+	<div class = 'photo'>
+		<div id = 'gallery'>
+			<% @photos.each{|p| %>
+			<a href = "#<%= p.file_name %>"><%= content_tag(:span, nil, :class => "smallpic", :style => "background-image:url('/images/#{p.file_name}')") %></a>
+			<% }%>
+		</div>
+		<% index = 0 %>
+		<% @photos.each{|p| %>
+		<div id = "<%= p.id %>">
+			<%= image_tag("/images/#{p.file_name}", :id => p.file_name) %>
+			<div id = "newTag_<% p.id %>"></div>
+			<p class = 'timestamp'>(posted on <%= p.date_time %>)</p>
+			<% p.tags.each{|t| %>
+			<div class="tag" style="left: <%= t.left %>px;top: <%= t.top %>px;width: <%= t.width %>px;height: <%= t.height %>px;">
+				<div class="label"><%= t.user.full_name%></div>
+			</div>
+			<% } %>
+		</div>
+		<% if !@user_id.nil? then %>
+		<div id = 'tagged_#{p.file_name}'></div>
+		<span class = "add_new"><a href="/comments/new/<%= p.id %>#img">New Comment</a></span>
+		<span class = "add_new"><a href="#<%= p.file_name %>" id="<%= p.id %>_button">Tag:</a></span>
+		<span style = "display: inline-block;">
+			<%= form_tag("/photos/tagger/#{p.id}", :method => "post", :id => "form_#{p.id}") do %>
+			<%= select_tag "tagUser", options_from_collection_for_select(@users, "id", "full_name") %>
+			<input type="hidden" name="left" id="left_#{p.id}">
+			<input type="hidden" name="top" id="top_#{p.id}">
+			<input type="hidden" name="width" id="width_#{p.id}">
+			<input type="hidden" name="height" id="height_#{p.id}">
+			<%= submit_tag("Submit", :disabled => true, :id => "submit_#{p.id}") %> 
+			<% end %>
+		</span>
+		<script type="text/javascript">
+			new Tagger("<%= p.id %>", "newTag_<% p.id %>", "left_#{p.id}", "top_#{p.id}", "width_#{p.id}", "height_#{p.id}");
+		</script>
+		<br/><br/>
+		<% else %>
+		<p class = 'ferror'>Only logged-in users can comment on or tag the photo.</p>
+		<% end %>
+		<% p.comments.each{ |c| %>
+		<div class = 'comment'>
+			<p><a href = "/photos/index/<%= c.user.id %>" ><%= c.user.first_name %> <%= c.user.last_name %></a> (on <%= c.date_time %>):</p>
+			<p><%= c.comment %></p>
+		</div>
+		<br>
+		<% } %>
+		<% index += 1 %>
+		<% } %>
+	</div>
+	<% end %>
+
+

@@ -1,0 +1,40 @@
+<div id = 'links'>
+	<a href = '/users/login'>[Log in]</a>
+	<a href = '/users/index'>[Back to users list]</a> 
+</div>
+
+<h2 class='reg'>Register</h2>
+
+<%= form_for(:user, :url => {:action => :create}, :html => {:id => "form", :onsubmit => "return submit_check();"}) do |form| %>
+<table class = "form">
+	<tr>
+		<td width="105px">First Name:</td><td><%= form.text_field(:first_name, :onkeyup => "autocheck('user_first_name')", :class => "textfield") %></td>
+		<td id="err_user_first_name" class="notice"></td>
+	</tr>
+	<tr>
+		<td>Last Name:</td><td><%= form.text_field(:last_name, :onkeyup => "autocheck('user_last_name')", :class => "textfield") %></td>
+		<td id="err_user_last_name" class="notice"></td>
+	</tr>
+	<tr>
+		<td>Login Name:</td><td><%= form.text_field(:login_name, :onkeyup => "autocheck('user_login_name')", :class => "textfield") %></td>
+		<td id="err_user_login_name" class="notice">
+			<% if flash[:error] %><%= flash[:error] %><% end %>
+		</td>
+	</tr>
+	<tr>
+		<td>Password:</td><td><%= form.password_field(:password, :onkeyup => "autocheck('user_password')", :class => "textfield") %></td>
+		<td id="err_user_password" class="notice"></td>
+	</tr>
+	<tr>
+		<td>Confirm Password:</td><td><%= form.password_field(:password_cnf, :onkeyup => "autocheck('user_password_cnf')", :class => "textfield") %></td>
+		<td id="err_user_password_cnf" class="notice"></td>
+	</tr>
+	<tr>
+		<td colspan = '2' align='center'><%= form.submit("Create Account", :class => "submit") %><%= submit_tag("Reset", :type => "button", :onclick => "reset()") %></td>
+	</tr>
+	<tr>
+		<td colspan = '2' align='center' id='alert' class='notice'></td>
+	</tr>
+</table>
+
+<% end %>

@@ -1,0 +1,13 @@
+<div id = 'links'>
+	<% if @user_id.nil? then %>
+	<a href = '/users/login'>[Log in]</a>
+	<% else %>
+	<a href = "/photos/index/<%=@user_id%>">[Home]</a>
+	<a href = '/users/logout'>[Log out]</a>
+	<% end %>
+</div>
+
+<h1>Users List</h1>
+<% @users.each{|s| %>
+<div class = 'list'><a href = '/photos/index/<%= s.id %>'><%= s.first_name %> <%= s.last_name %></a></div>
+<% } %>

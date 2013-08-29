@@ -1,0 +1,23 @@
+<div id = 'links'>
+	<% if @user_id.nil? then %>
+	<a href = '/users/login'>[Log in]</a>
+	<% else %>
+	<a href = "/photos/index/<%=@user_id%>">[Home]</a>
+	<a href = '/users/logout'>[Log out]</a>
+	<% end %>
+	<a href = '/users/index'>[Back to users list]</a> 
+</div>
+
+<% if flash[:notice] %>
+    <p class="fnotice"><%= flash[:notice] %></p>
+<% end %>
+<% if flash[:error] %>
+    <p class="ferror"><%= flash[:error] %></p>
+<% end %>
+
+<div id="upload">
+<%= form_for(:photo, :url => {:action => :create}) do |form| %>
+	Upload photo: <%= form.file_field(:file) %>
+	<%= form.submit "Upload" %>
+<% end %>
+</div>

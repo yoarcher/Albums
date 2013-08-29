@@ -1,0 +1,159 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+ @import
+ url('http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic')
+ ;
+
+ @CHARSET "UTF-8";
+
+ body {
+ 	font-family: lato, tahoma, helvetica, arial, sans-serif;
+ 	font-size: 12px;
+ 	text-align: center;
+ 	margin: 0;
+ 	background: #f0f0f0;
+ }
+
+ #wrapper {
+ 	margin: auto;
+ 	text-align: center;
+ 	width: 720px;
+ 	position: relative;
+ 	background: #ffffff;
+ 	border: 1px solid #808080;
+ }
+
+ #wrapper .header {
+ 	width: 720px;
+ }
+
+ #fill_in {
+ 	text-align: left;
+ 	margin: 40px;
+ 	line-height: 120%;
+ }
+
+ #fill_in a {
+ 	color: #37A;
+ 	text-decoration: none;
+ 	line-height: 150%;
+ }
+
+ #fill_in a:visited{
+ 	color: #669;
+ }
+
+ #fill_in a:hover{
+ 	color: white;
+ 	background-color: #5098ce;
+ }
+
+ #fill_in span.add_new a {
+ 	background-color: #1e669e;
+ 	padding: 3px 4px 3px 4px;
+ 	margin:0 2px 0 2px;
+ 	color: #ffffff;
+ }
+
+ #fill_in span.add_new a:visited {
+ 	color: #ffffff;
+ }
+
+ #fill_in span.add_new a:hover{
+ 	color: white;
+ 	background-color: #5098ce;
+ }
+
+ #tail {
+ 	text-align: right;
+ 	margin-right: 5px;
+ 	font-size: 8px;
+ 	color: #666666;
+ }
+
+
+ h1 {
+ 	text-align: center;
+ }
+
+
+ .photo {
+ 	border: 4px groove;
+ 	width: 80%;
+ 	display: block;
+ 	margin-left: auto;
+ 	margin-right: auto;	
+ 	margin-top: 10px;
+ 	margin-bottom: 10px;
+ 	padding: 5px 30px 5px 30px;
+ }
+
+ .photo img {
+ 	display: block;
+ 	border: 1px solid grey;
+ 	max-width: 100%;
+ 	max-height: 400px;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ }
+
+ .photo .comment {
+ 	border: 2px ridge;
+ 	display: block;
+ 	width: 91%;
+ 	padding: 0 20px;
+ }
+
+ .photo textarea {
+ 	resize: vertical;
+ 	display: block;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	margin-bottom: 8px;
+ 	padding: 2px 4px 2px 4px;
+ }
+
+ .button {
+ 	display: block;
+ 	margin-left: auto;
+ 	margin-right: auto;
+ 	margin-bottom: 2%;
+ }
+
+ #links {
+ 	text-align: right;
+ 	margin: 0px 30px;
+ 	font-size: 90%;
+ 	margin-bottom: 25px;
+ }
+
+ .fnotice {
+ 	display: block;
+ 	font-weight: bold;
+ 	font-size: 10pt;
+ 	color: #17aa64;
+ 	text-align: center;
+ 	background-color: yellow;
+ 	padding-top: 2px;
+ 	padding-bottom: 2px;
+ }
+
+ .ferror {
+ 	display: block;
+ 	font-weight: bold;
+ 	font-size: 10pt;
+ 	color: red;
+ 	text-align: center;
+ }

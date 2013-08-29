@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<title><%=@title%></title>
+<head>
+	<%= stylesheet_link_tag    "application" %>
+	<%= javascript_include_tag "application" %>
+	<%= yield :javascript_includes %>
+	<%= csrf_meta_tags %>
+</head>
+<body>
+	<div id = 'wrapper'>
+	<a href='https://github.com/yoarcher'><%= image_tag('cs142header-w.jpg', :alt => 'rss feed', :class => 'header') %></a>
+		<br>
+		<div id = 'fill_in'>
+			<%= yield %>
+		</div>
+		<br><br>
+		<div id = 'tail'>Copyright (c) 2013 You Yuan</div>
+	</div>
+</body>
+</html>
